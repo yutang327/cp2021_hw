@@ -128,7 +128,7 @@ img.add_border {
                             <li><a href="./../blog/index.html">blog</a></li>
                         </ul>
                       </li>
-                     <li><a href='About.html'>About</a><li class='has-children'><a href='exam.html'>exam</a><ul class='dropdown'><li><a href='w13.html'>w13</a></li></ul><li><a href='HW1.html'>HW1</a><li><a href='HW2.html'>HW2</a><li><a href='HW3.html'>HW3</a><li><a href='Final Project.html'>Final Project</a><li><a href='run.html'>run</a><li class='has-children'><a href='game.html'>game</a><ul class='dropdown'><li><a href='snake(手動).html'>snake(手動)</a></li>
+                     <li><a href='About.html'>About</a><li><a href='HW1.html'>HW1</a><li><a href='HW2.html'>HW2</a><li><a href='HW3.html'>HW3</a><li><a href='run.html'>run</a><li class='has-children'><a href='game.html'>game</a><ul class='dropdown'><li><a href='snake(手動).html'>snake(手動)</a></li></ul><li class='has-children'><a href='Exam.html'>Exam</a><ul class='dropdown'><li><a href='w13.html'>w13</a></li></ul><li><a href='Final Project.html'>Final Project</a></li>
                       </ul>
                 </nav>
               </div>
@@ -139,7 +139,7 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">exam << <a href='exam.html'>Previous</a> <a href='HW1.html'>Next</a> >> HW1<br /><h1>w13</h1>
+    <div id="tipue_search_content">Exam << <a href='Exam.html'>Previous</a> <a href='Final Project.html'>Next</a> >> Final Project<br /><h1>w13</h1>
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
 <!-- for ggame -->
@@ -246,19 +246,42 @@ print("Python version: ", sys.version_info)
 print("Python keywords: ", keyword.kwlist)
 """, "kw_editor", "kw_console", "kw__container", "kw_py_src")
 # id 為 "keyword" 的按鈕點按時, 執行 kw1 物件中的 prog 方法
-doc["keyword"].bind('click', kw1.prog)
 </script>
 </p>
 <script type="text/python3">
 import beditor
 from browser import document
-url = "https://gist.githubusercontent.com/41023146/8d18ed1cdd15e4668b7c6c60e73f67bf/raw/b7a10cf0dc9f31d3058c023e833c378012bfe1c1/w13"
+url = "https://gist.githubusercontent.com/yutang327/5175661ee492b4bff23e2fc29a2889b3/raw/1d05ba520758e198ac08d5650bc986770298a00a/w13_1"
 src = open(url).read()
 w13 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
 document["w13"].bind("click", w13.prog)
 </script>
-<p><button id="keyword">Keyword</button><button id="w13">列出 10 個座標</button></p>
-<br />exam << <a href='exam.html'>Previous</a> <a href='HW1.html'>Next</a> >> HW1</div>
+<script type="text/python3">
+import beditor
+from browser import document
+url = "https://gist.githubusercontent.com/yutang327/2eb559681d48068794032c2f09aaaa38/raw/38358fd5f85088b814f3b9f22e374fdc13df0133/w13_2"
+src = open(url).read()
+w13_2 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["w13_2"].bind("click", w13_2.prog)
+</script>
+<script type="text/python3">
+import beditor
+from browser import document
+url = "https://gist.githubusercontent.com/yutang327/82677126070754796e3edba49589964e/raw/fdabec25fb6be5e3a065d4c63761ad474819f1a6/w13_3"
+src = open(url).read()
+w13_3 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["w13_3"].bind("click", w13_3.prog)
+</script>
+<script type="text/python3">
+import beditor
+from browser import document
+url = "https://gist.githubusercontent.com/yutang327/8b5374237a1821704e6ce9a7ba058b44/raw/250a1e0aae43c3d2313f14e458109ba7b3204d47/w13_4"
+src = open(url).read()
+w13_4 = beditor.editor(src, "kw_editor", "kw_console", "kw__container", "kw_py_src")
+document["w13_4"].bind("click", w13_4.prog)
+</script>
+<p><button id="w13">列出 10 個座標</button><button id="w13_2">畫表格</button><button id="w13_3">隨機生成方格</button><button id="w13_4">隨機生成方格plus</button></p>
+<br />Exam << <a href='Exam.html'>Previous</a> <a href='Final Project.html'>Next</a> >> Final Project</div>
         
     <!-- footer -->
       <div class="container">
