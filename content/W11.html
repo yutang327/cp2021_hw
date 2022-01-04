@@ -139,7 +139,20 @@ img.add_border {
           </div>
           
         </header>
-    <div id="tipue_search_content">game << <a href='game.html'>Previous</a> <a href='snake(手動).html'>Next</a> >> snake(手動)<br /><h1>snake(automatic)</h1>
+    <div id="tipue_search_content">HW2 << <a href='HW2.html'>Previous</a> <a href='HW3.html'>Next</a> >> HW3<br /><h1>W11</h1>
+<h4>Examples</h4>
+<p>以下為 <a href="https://mde.tw/cp2021_hw/content/W11.html">https://mde.tw/cp2021_hw/content/W11.html</a> 按鈕範例.</p>
+<p>這個頁面 demo 如何在同一頁面下納入多個線上 Ace 編輯器與執行按鈕. (本動態頁面檔案 <a href="./../downloads/Examples.txt">Examples.txt</a>)</p>
+<p>1. 從 1 累加到 100 (以下列 button 呈現).</p>
+<p>2. 教科書 (<a href="https://link.springer.com/book/10.1007/978-981-10-3277-6">Programming with Python</a>) 2.6 Exercises, 共有三個題目, 請分別將程式製作為按鈕 (button).</p>
+<p>3. 請利用 <a href="https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API">Canvas</a> 繪製 Fig. 3.7 的流程圖 (Flow Chart).</p>
+<p>4. 請利用 Canvas 繪製你所編寫"從 1 累加到 10"程式的流程圖 (Flow Chart).</p>
+<p>5. 請各班各組合力完成 3.5 Exercises 中的 14 個題目.</p>
+<p>6. 請各組從 4.3 Exercises 中選擇一個題目製作為頁面中的按鈕 (button).</p>
+<p>無 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API">Canvas</a> 繪圖需求的程式, 可放在第一區, 而採 <a href="https://developer.mozilla.org/zh-TW/docs/Web/API/Canvas_API">Canvas</a> 繪圖的程式則可放入第二區.</p>
+<p>將 Gist 中的程式導入本頁面的程式段: <a href="./../downloads/brython_button_prog.txt">brython_button_prog.txt</a>, 只要配合 button id 對應即可導入編輯區.</p>
+<p><button id="add1to100">1 add to 100</button><button id="p261">p261</button></p>
+<p>將 iterable 與 iterator <a href="https://home.gamer.com.tw/creationDetail.php?sn=4337438">相關說明</a>, 利用 Brython 與 Ace Editor 整理在這個頁面.</p>
 <!-- 導入 brython 程式庫 -->
 <script src="./../cmsimde/static/brython.js"></script>
 <script src="./../cmsimde/static/brython_stdlib.js"></script>
@@ -171,64 +184,100 @@ function doSave(storage_id, filename){
 }
 </script>
 </p>
-<p><!-- 印出版次與關鍵字程式 --></p>
+<!-- 內建程式 1 ####################################### 內建程式 1 開始-->
 <p>
 <script type="text/python3">
 from browser import document as doc
 import ace
 # 清除畫布
-def clear_bd(ev):
-    bd = doc["brython_div"]
+def clear_bd1(ev):
+    bd = doc["brython_div1"]
     bd.clear()
-# Brython 3.3.4 內建的 container 名稱為  'container' 且 turtle 輸出為 svg 必須使用 div 訂定 id
-Ace = ace.Editor(editor_id="kw_editor", console_id="kw_console", container_id="kw__container", storage_id="kw_py_src" )
+Ace1 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
 # 從 gist 取出程式碼後, 放入 editor 作為 default 程式
-def run():
+def run1():
     # 利用 get 取下 src 變數值
     try:
         url = doc.query["src"]
     except:
-        url = "https://gist.githubusercontent.com/yutang327/3e6f8382cc9e5d0e617744d7ea9d2910/raw/8138ea6f70dbb3b7879bf784b91dec5deecfd07f/snake%2520auto"
+        url = "https://gist.githubusercontent.com/yutang327/c3d8bbc45b4bc3e4d73234f8b4b4fb72/raw/b7ec713b5c8e195d38fa74c4ea6f9e2ca24c8534/add%2520100"
     prog = open(url).read()
 
     # 將程式載入編輯區
-    Ace.editor.setValue(prog)
-    Ace.editor.scrollToRow(0)
-    Ace.editor.gotoLine(0)
+    Ace1.editor.setValue(prog)
+    Ace1.editor.scrollToRow(0)
+    Ace1.editor.gotoLine(0)
     # 直接執行程式
     #ns = {'__name__':'__main__'}
     #exec(prog, ns)
     # 按下 run 按鈕
-    Ace.run()
+    Ace1.run()
 
 # 執行程式, 顯示輸出結果與清除輸出結果及對應按鈕綁定
-doc['kw_run'].bind('click', Ace.run)
-doc['kw_show_console'].bind('click', Ace.show_console)
-doc['kw_clear_console'].bind('click', Ace.clear_console)
-doc['clear_bd'].bind('click', clear_bd)
+doc['kw_run1'].bind('click', Ace1.run)
+doc['kw_show_console1'].bind('click', Ace1.show_console)
+doc['kw_clear_console1'].bind('click', Ace1.clear_console)
+doc['clear_bd1'].bind('click', clear_bd1)
 # 呼叫函式執行
-run()
+run1()
 </script>
 </p>
+<!-- 內建程式 1 ####################################### 內建程式 1 結束-->
+<p></p>
+<!-- button 程式 1 ####################################### button 程式 1 開始-->
+<p><!-- add 1 to 100 開始 -->
+<script type="text/python3">
+from browser import document as doc
+import ace
+
+# 清除畫布
+def clear_bd1(ev):
+    bd = doc["brython_div1"]
+    bd.clear()
+
+# 利用 ace 中的 Editor 建立 Ace 物件, 其中的輸入變數分別對應到頁面中的編輯區物件
+Ace2 = ace.Editor(editor_id="kw_editor1", console_id="kw_console1", container_id="kw__container1", storage_id="kw_py_src1" )
+
+class button2:
+    def __init__(self, url):
+        self.url = url
+
+    # 記得加入 event 輸入變數
+    def do(self,ev):
+        Ace2.editor.setValue(open(self.url).read())
+        Ace2.editor.scrollToRow(0)
+        Ace2.editor.gotoLine(0)
+        Ace2.run()
+
+add1to100_url = "https://gist.githubusercontent.com/yutang327/183c730813a2fe53d09ba3d6bdee0c87/raw/8e1a74231eafda4ef24895e0db41ccd005f6430f/add%2520100"
+add1to100 = button2(add1to100_url)
+doc["add1to100"].bind('click', add1to100.do)
+################################# p261 start 
+p261_url = "https://gist.githubusercontent.com/yutang327/0a6f44ec089fe2f7bae01cc8a515271b/raw/3673bc1f89d1630e33e91077eef9f56cd7cfce63/add%2520100"
+p261 = button2(p261_url)
+doc["p261"].bind('click', p261.do)
+################################## p261 end
+</script>
+</p>
+<p><!-- add 1 to 100 結束--></p>
+<!-- editor1 開始 -->
 <p><!-- 用來顯示程式碼的 editor 區域 --></p>
-<div id="kw_editor" style="width: 600px; height: 300px;"></div>
+<div id="kw_editor1" style="width: 600px; height: 300px;"></div>
 <p><!-- 以下的表單與按鈕與前面的 Javascript doSave 函式以及 FileSaver.min.js 互相配合 --></p>
-<!-- 存擋表單開始 --><form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src', 'kw_filename');" type="submit" value="Save"/></form><!-- 存擋表單結束 -->
+<p><!-- 存擋表單開始 --></p>
+<form><label>Filename: <input id="kw_filename" placeholder="input file name" type="text"/>.py</label> <input onclick="doSave('kw_py_src1', 'kw_filename1');" type="submit" value="Save"/></form>
+<p><!-- 存擋表單結束 --></p>
 <p></p>
-<!-- 執行與清除按鈕開始 -->
-<p><button id="kw_run">Run</button> <button id="kw_show_console">Output</button> <button id="kw_clear_console">清除輸出區</button><button id="clear_bd">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
-<!-- 執行與清除按鈕結束 -->
+<p><!-- 執行與清除按鈕開始 --></p>
+<p><button id="kw_run1">Run</button> <button id="kw_show_console1">Output</button> <button id="kw_clear_console1">清除輸出區</button><button id="clear_bd1">清除繪圖區</button><button onclick="window.location.reload()">Reload</button></p>
+<p><!-- 執行與清除按鈕結束 --></p>
 <p></p>
-<!-- 程式執行 ouput 區 -->
-<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console"></textarea></div>
-<!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 -->
-<div id="brython_div"></div>
-<!-- 導入 gearUtils-0.9.js Cango 齒輪繪圖程式庫 -->
-<script src="https://mde.tw/cp2021/cmsimde/static/Cango-24v03-min.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/gearUtils-09.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/SVGpathUtils-6v03-min.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/sylvester.js"></script>
-<script src="https://mde.tw/cp2021/cmsimde/static/PrairieDraw.js"></script><br />game << <a href='game.html'>Previous</a> <a href='snake(手動).html'>Next</a> >> snake(手動)</div>
+<p><!-- 程式執行 ouput 區 --></p>
+<div style="width: 100%; height: 100%;"><textarea autocomplete="off" id="kw_console1"></textarea></div>
+<p><!-- Brython 程式執行的結果, 都以 brython_div 作為切入位置 --></p>
+<div id="brython_div1"></div>
+<p><!-- editor1 結束 --></p>
+<hr/><br />HW2 << <a href='HW2.html'>Previous</a> <a href='HW3.html'>Next</a> >> HW3</div>
         
     <!-- footer -->
       <div class="container">
